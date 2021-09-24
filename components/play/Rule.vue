@@ -11,21 +11,14 @@
 				2. 各問題1つだけタイポが紛れています。<br />
 				3. なるべく早くタイポを探そう!!
 			</p>
-			<button @click="setCurrentComponent" class="button btn-pink">Start</button>
+			<NuxtLink type="button" to="/play/play" class="button btn-pink"
+				>Start</NuxtLink
+			>
 		</div>
 	</div>
 </template>
 
-<script>
-export default {
-	name: "Rule",
-  methods: {
-    setCurrentComponent() {
-      this.$store.commit('changeCurrentComponent', { nextComponent: "Play", nextDesc: "1/5" })
-    },
-  }
-};
-</script>
+<script></script>
 
 <style scoped>
 div {
@@ -37,7 +30,7 @@ div {
 p {
 	margin: 3rem;
 }
-button {
+a {
 	align-self: flex-end;
 	margin-bottom: 3rem;
 }

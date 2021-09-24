@@ -1,0 +1,44 @@
+.quiz-p {
+	line-height: 1em;
+	cursor: pointer;
+	margin-right: 1rem;
+}
+.orange {
+	color: #ce9178;
+}
+.skyblue {
+	color: #9cdcfe;
+}
+.lightblue {
+	color: #569cd6;
+}
+.green {
+	color: #6a9955;
+}
+.pink {
+	color: #c586c0;
+}
+.yellow {
+	color: #dcdcaa;
+}
+.cleargreen {
+	color: #4ec9b0;
+}
+.blue {
+	color: #007acc;
+}
+.play-wrapper {
+	height: 90vh;
+}
+.play-component-wrapper {
+	width: 80%;
+	height: 70vh;
+	border: 10px solid #3a3d41;
+	border-radius: 15px;
+	text-align: center;
+	padding: 1rem;
+}
+.desc {
+	margin-left: 12%;
+	align-self: start;
+}

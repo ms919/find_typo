@@ -1,50 +1,53 @@
+import frozen_const from '~/const/const.js';
+
 export const state = () => ({
 	currentComponent: "PlayOdd",
-	itemsPointer: 0,
+	itemsPointer: 1,
 	// allItems: null,
-	allItems: [
-		[
-			[
+	allItems: {
+		1: {
+			1: [
 				"<p class='orange quiz-p'>abcde</p>",
 				"<p class='quiz-p' id='typo'>typo</p>",
 				"<p class='quiz-p lightblue'>abcde</p>",
 			],
-			["<p class='pink quiz-p'>abcde</p>"],
-		],
-		[
-			[
+			2: ["<p class='pink quiz-p'>abcde</p>"],
+		},
+		2: {
+			1: [
 				"<p class='quiz-p' id='typo'>typo</p>",
 				"<p class='quiz-p blue'>abcde</p>",
 			],
-			["<p class='green quiz-p'>abcde</p>", "<p class='quiz-p'>abcde</p>"],
-		],
-		[
-			[
+			2: ["<p class='pink quiz-p'>abcde</p>"],
+		},
+		3: {
+			1: [
 				"<p class='pink quiz-p'>abcde</p>",
 				"<p class='quiz-p skyblue' id='typo'>typo</p>",
 			],
-			["<p class='green quiz-p'>abcde</p>", "<p class='quiz-p'>abcde</p>"],
-		],
-		[
-			[
+			2: ["<p class='green quiz-p'>abcde</p>", "<p class='quiz-p'>abcde</p>"],
+		},
+		4: {
+			1: [
 				"<p class='pink quiz-p'>abcde</p>",
 				"<p class='quiz-p skyblue' id='typo'>typo</p>",
 			],
-			["<p class='green quiz-p'>abcde</p>", "<p class='quiz-p'>abcde</p>"],
-		],
-		[
-			[
-				"<p class='pink quiz-p'>abcde</p>",
-				"<p class='quiz-p skyblue' id='typo'>typo</p>",
+			2: ["<p class='pink quiz-p'>abcde</p>"],
+		},
+		5: {
+			1: [
+				"<p class='orange quiz-p'>abcde</p>",
+				"<p class='quiz-p' id='typo'>typo</p>",
+				"<p class='quiz-p lightblue'>abcde</p>",
 			],
-			["<p class='green quiz-p'>abcde</p>", "<p class='quiz-p'>abcde</p>"],
-		],
-	],
+			2: ["<p class='pink quiz-p'>abcde</p>"],
+		},
+	},
 });
 
 export const getters = {
 	currentComponent: (state) => state.currentComponent,
-	currentDesc: (state) => String(state.itemsPointer + 1) + "/5",
+	currentDesc: (state) => String(state.itemsPointer) + "/5",
 	itemsPointer: (state) => state.itemsPointer,
 	currentItems: (state) => state.allItems[state.itemsPointer],
 	allItems: (state) => state.allItems,
@@ -77,10 +80,11 @@ export const actions = {
 		// 最初にポインタをインクリメント
 		commit("incrementItemsPointer");
 		// 更新したポインタに合わせてCurrentItemsを変更
-		const itemsPointer = getters.itemsPointer;
-		commit("changeCurrentItems", itemsPointer);
+		commit("changeCurrentItems", getters.itemsPointer);
 		// コンポーネントを判定してセット
-		const nextComponent = getters.currentComponent == "PlayOdd" ? "PlayEven" : "PlayOdd";
+		const nextComponent =
+			getters.currentComponent == "PlayOdd" ? "PlayEven" : "PlayOdd";
 		commit("changeCurrentComponent", nextComponent);
+		confirm(frozen_const.TYPO_ID);
 	},
 };

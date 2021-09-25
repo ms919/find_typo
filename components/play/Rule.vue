@@ -18,8 +18,6 @@
 	</div>
 </template>
 
-<script></script>
-
 <style scoped>
 div {
 	text-align: left;

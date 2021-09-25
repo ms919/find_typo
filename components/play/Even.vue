@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div v-for="item in items" :key="item.id">
+		<div v-for="item in currentItems" :key="item.id">
 			<div
 				v-for="i in item"
 				:key="i.id"
@@ -12,23 +12,10 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-	data() {
-		return {
-			items: [
-				[
-					"<p class='orange quiz-p'>abcde</p>",
-					"<p class='quiz-p' id='typo'>typo</p>",
-					"<p class='quiz-p lightblue'>abcde</p>",
-				],
-				[
-					"<p class='pink quiz-p'>abcde</p>",
-					"<p class='quiz-p'>abcde</p>",
-					"<p class='quiz-p'>abcde</p>",
-				],
-			],
-		};
-	},
+	computed: mapGetters(["currentItems"]),
 	methods: {
 		gotoNext() {
 			this.$store.dispatch("gotoNext");

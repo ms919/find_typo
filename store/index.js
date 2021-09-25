@@ -80,8 +80,7 @@ export const actions = {
 		const itemsPointer = getters.itemsPointer;
 		commit("changeCurrentItems", itemsPointer);
 		// コンポーネントを判定してセット
-		let nextComponent = getters.currentComponent == "PlayOdd" ? "PlayEven" : "PlayOdd";
-		if (itemsPointer + 1 == 5){ nextComponent = "PlayLast"}
+		const nextComponent = getters.currentComponent == "PlayOdd" ? "PlayEven" : "PlayOdd";
 		commit("changeCurrentComponent", nextComponent);
 	},
 };

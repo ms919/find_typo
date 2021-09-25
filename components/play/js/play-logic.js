@@ -1,24 +1,14 @@
-<template>
-	<div>
-		<div v-for="item in currentItems" :key="item.id">
-			<div
-				v-for="i in item"
-				:key="i.id"
-				v-html="$sanitize(i)"
-				style="display: inline-block;"
-			></div>
-		</div>
-	</div>
-</template>
-
-<script>
 import { mapGetters } from "vuex";
 
 export default {
-	computed: mapGetters(["currentItems"]),
+	computed: mapGetters(["currentItems", "itemsPointer"]),
 	methods: {
 		gotoNext() {
-			this.$router.push('/play/score')
+			if (this.itemsPointer + 1 == 5) {
+				this.$router.push("/play/score");
+			} else {
+				this.$store.dispatch("gotoNext");
+			}
 		},
 	},
 	mounted() {
@@ -31,4 +21,3 @@ export default {
 		});
 	},
 };
-</script>

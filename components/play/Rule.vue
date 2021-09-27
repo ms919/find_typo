@@ -17,7 +17,13 @@
 		</div>
 	</div>
 </template>
-
+<script>
+export default {
+	created() {
+		this.$store.dispatch("getAllItems");
+	}
+}
+</script>
 <style scoped>
 div {
 	text-align: left;

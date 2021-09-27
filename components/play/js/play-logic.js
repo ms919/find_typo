@@ -1,11 +1,11 @@
 import { mapGetters } from "vuex";
-import frozen_const from "~/const/const.js";
+import fixed from "~/const/const.js";
 
 export default {
 	computed: mapGetters(["currentItems", "itemsPointer"]),
 	methods: {
 		gotoNext() {
-			if (this.itemsPointer == frozen_const.NUM_OF_QUESTION) {
+			if (this.itemsPointer + 1 == fixed.NUM_OF_QUESTION) {
 				this.$router.push("/play/score");
 			} else {
 				this.$store.dispatch("gotoNext");

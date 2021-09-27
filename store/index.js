@@ -1,53 +1,14 @@
-import frozen_const from '~/const/const.js';
+import { getRandomInt, createAllItems } from "./store_logic.js";
 
 export const state = () => ({
 	currentComponent: "PlayOdd",
-	itemsPointer: 1,
-	// allItems: null,
-	allItems: {
-		1: {
-			1: [
-				"<p class='orange quiz-p'>abcde</p>",
-				"<p class='quiz-p' id='typo'>typo</p>",
-				"<p class='quiz-p lightblue'>abcde</p>",
-			],
-			2: ["<p class='pink quiz-p'>abcde</p>"],
-		},
-		2: {
-			1: [
-				"<p class='quiz-p' id='typo'>typo</p>",
-				"<p class='quiz-p blue'>abcde</p>",
-			],
-			2: ["<p class='pink quiz-p'>abcde</p>"],
-		},
-		3: {
-			1: [
-				"<p class='pink quiz-p'>abcde</p>",
-				"<p class='quiz-p skyblue' id='typo'>typo</p>",
-			],
-			2: ["<p class='green quiz-p'>abcde</p>", "<p class='quiz-p'>abcde</p>"],
-		},
-		4: {
-			1: [
-				"<p class='pink quiz-p'>abcde</p>",
-				"<p class='quiz-p skyblue' id='typo'>typo</p>",
-			],
-			2: ["<p class='pink quiz-p'>abcde</p>"],
-		},
-		5: {
-			1: [
-				"<p class='orange quiz-p'>abcde</p>",
-				"<p class='quiz-p' id='typo'>typo</p>",
-				"<p class='quiz-p lightblue'>abcde</p>",
-			],
-			2: ["<p class='pink quiz-p'>abcde</p>"],
-		},
-	},
+	itemsPointer: 0,
+	allItems: [],
 });
 
 export const getters = {
 	currentComponent: (state) => state.currentComponent,
-	currentDesc: (state) => String(state.itemsPointer) + "/5",
+	currentDesc: (state) => String(state.itemsPointer + 1) + "/5",
 	itemsPointer: (state) => state.itemsPointer,
 	currentItems: (state) => state.allItems[state.itemsPointer],
 	allItems: (state) => state.allItems,
@@ -69,12 +30,21 @@ export const mutations = {
 };
 
 export const actions = {
-	getAllItems({ commit }) {
+	getAllItems({ commit, getters }) {
 		// allItemsが空なら取得、値が入ってるなら空にするか聞く
 		// DBから5問分ランダムに取得
+		const quizObj = [
+			{ correct: "abc", typo: "typo" },
+			{ correct: "cdefg", typo: "typo" },
+			{ correct: "hijklmn", typo: "typo" },
+			{ correct: "opqr", typo: "typo" },
+			{ correct: "stuvwx", typo: "typo" },
+		];
 		// 整形
+		const result = createAllItems(quizObj);
 		// 格納
-		commit("setAllItems", allItems);
+		commit("setAllItems", result);
+		console.log(getters.allItems);
 	},
 	gotoNext({ commit, getters }) {
 		// 最初にポインタをインクリメント
@@ -85,6 +55,5 @@ export const actions = {
 		const nextComponent =
 			getters.currentComponent == "PlayOdd" ? "PlayEven" : "PlayOdd";
 		commit("changeCurrentComponent", nextComponent);
-		confirm(frozen_const.TYPO_ID);
 	},
 };

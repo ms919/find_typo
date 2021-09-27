@@ -21,6 +21,7 @@ const createAllItems = (quizObj) => {
 			itemsInfoArr[i].words_per_row
 		);
 	});
+	console.log(itemsInfoArr);
 	// 出来上がった情報オブジェクトを元に結果オブジェクトを生成
 	return formatAllItems(itemsInfoArr);
 };
@@ -38,9 +39,12 @@ const decideWordsPerRow = (correctStr) => {
 
 const decideTypoPosition = (maxRowNum, wordsPerRow) => {
 	// ランダム関数で行位置を決定
-	const rowNum = getRandomInt(1, maxRowNum);
+	const rowNum = getRandomInt(0, maxRowNum - 1);
 	// ランダム関数で何文字目かを決定
-	const wordPosition = getRandomInt(1, wordsPerRow[rowNum]);
+	const wordPosition =
+		rowNum == 0  // wordsPerRowには1行に並べる単語数が入るため、-1する。
+			? getRandomInt(0, wordsPerRow[rowNum] - 1)
+			: getRandomInt(0, wordsPerRow[rowNum - 1] - 1);
 	return { row: rowNum, col: wordPosition };
 };
 
@@ -87,28 +91,32 @@ const formatAllItems = (itemsInfoArr) => {
 			baseStrArr[i].push([]);
 			[...Array(arr.words_per_row[j])].map((_, k) => {
 				baseAttrArr[i][j].push(`class='${arr.color_of_words[j][k]}'`);
-				baseStrArr[i][j].push(`'${arr.correct}'`);
+				baseStrArr[i][j].push(arr.correct);
 			});
 		});
 	});
+	console.log(baseAttrArr);
+	console.log(baseStrArr);
 
 	// タイポを反映させる
 	let x = 0;
 	let y = 0;
 	[...Array(fixed.NUM_OF_QUESTION)].map((_, i) => {
 		arr = itemsInfoArr[i];
-		x = arr.typo_position.row - 1;
-		y = arr.typo_position.col - 1;
-		baseStrArr[i][x][y] = `'${arr.typo}'`;
+		x = arr.typo_position.row;
+		y = arr.typo_position.col;
+		baseStrArr[i][x][y] = arr.typo;
 		baseAttrArr[i][x][y] = `${baseAttrArr[i][x][y]} id='${fixed.TYPO_ID}'`;
 	});
+	console.log(baseAttrArr);
+	console.log(baseStrArr);
 
 	// pタグの文字列を作る
 	[...Array(fixed.NUM_OF_QUESTION)].map((_, i) => {
 		resArr.push([]);
 		[...Array(fixed.MAX_ROW_NUM)].map((_, j) => {
 			resArr[i].push([]);
-			[...Array(arr.words_per_row[j])].map((_, k) => {
+			[...Array(itemsInfoArr[i].words_per_row[j])].map((_, k) => {
 				resArr[i][j].push(
 					`<p ${baseAttrArr[i][j][k]}>${baseStrArr[i][j][k]}</p>`
 				);
@@ -116,7 +124,7 @@ const formatAllItems = (itemsInfoArr) => {
 		});
 	});
 
-  return resArr;
+	return resArr;
 };
 
 export { getRandomInt, createAllItems };

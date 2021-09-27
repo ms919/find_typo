@@ -16,7 +16,7 @@ export default Object.freeze({
 	},
 	// 横に並べられる限界値 - 1
 	MAX_WORD_NUM: {
-		3: 14,
+		3: 13,
 		4: 10,
 		5: 8,
 		6: 7,

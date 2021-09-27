@@ -4,7 +4,7 @@
 	>
 		<p class="desc">{{ currentDesc }}</p>
 		<div class="play-component-wrapper">
-			<Play/>
+			<component :is="currentComponent"></component>
 		</div>
 	</div>
 </template>
@@ -14,6 +14,6 @@ import { mapGetters } from "vuex";
 import "~/assets/css/play.css";
 
 export default {
-	computed: mapGetters(["currentDesc"]),
+	computed: mapGetters(["currentDesc", "currentComponent"]),
 };
 </script>

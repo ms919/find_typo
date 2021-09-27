@@ -27,6 +27,11 @@ export const mutations = {
 	setAllItems(state, allItems) {
 		state.allItems = allItems;
 	},
+	clearState(state) {
+		state.currentComponent = "PlayOdd";
+		state.itemsPointer = 0;
+		state.allItems = [];
+	},
 };
 
 export const actions = {
@@ -55,5 +60,8 @@ export const actions = {
 		const nextComponent =
 			getters.currentComponent == "PlayOdd" ? "PlayEven" : "PlayOdd";
 		commit("changeCurrentComponent", nextComponent);
+	},
+	clearState({ commit }) {
+		commit("clearState");
 	},
 };

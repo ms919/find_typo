@@ -14,7 +14,7 @@ export default Object.freeze({
 		6: "yellow",
 		7: "cleargreen",
 	},
-	// 横に並べられる限界値 - 1
+	// 横に並べられる限界値-2(横幅に余裕を持つため)
 	MAX_WORD_NUM: {
 		3: 13,
 		4: 10,

@@ -1,23 +1,31 @@
 import fixed from "~/const/const.js";
 import { db } from "~/plugins/firebase.js";
-import { collection, getDocs, addDoc, query, where } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 const getRandomInt = (min, max) => {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 const getGeneralQuiz = async () => {
-	let obj = {};
+	let dataArr = [];
+	let arr = [];
+	let numArr = [];
+
+	// DBから全データ取得
 	const querySnapshot = await getDocs(collection(db, "general_quiz"));
 	querySnapshot.forEach((doc) => {
-		obj = doc.data();
+		dataArr.push(doc.data());
 	});
-	return obj;
-}
 
-const addGeneralQuiz = () => {
+	// 取得データからランダムに5つ抽出
+	while(numArr.length < 5) {
+		arr.push(getRandomInt(0, dataArr.length -1));
+		numArr = [...new Set(arr)];
+	};
+	const result = numArr.map(x => dataArr[x]);
 
-}
+	return result;
+};
 
 const createAllItems = (quizObj) => {
 	// quizObjを値渡し
@@ -139,4 +147,4 @@ const formatAllItems = (itemsInfoArr) => {
 	return resArr;
 };
 
-export { getRandomInt, getGeneralQuiz, createAllItems };
+export { getGeneralQuiz, createAllItems, getRandomInt };

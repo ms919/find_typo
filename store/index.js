@@ -1,4 +1,4 @@
-import { getRandomInt, getGeneralQuiz, createAllItems } from "./store_logic.js";
+import { getGeneralQuiz, createAllItems, addGeneralQuiz } from "./store_logic.js";
 
 export const state = () => ({
 	currentComponent: "PlayOdd",
@@ -36,17 +36,9 @@ export const mutations = {
 
 export const actions = {
 	async getAllItems({ commit, getters }) {
-		// allItemsが空なら取得、値が入ってるなら空にするか聞く
 		// DBから5問分ランダムに取得
-		const obj = await getGeneralQuiz();
-		console.log(obj);
-		const quizObj = [
-			{ correct: "abc", typo: "typo" },
-			{ correct: "cdefg", typo: "typo" },
-			{ correct: "hijklmn", typo: "typo" },
-			{ correct: "opqr", typo: "typo" },
-			{ correct: "stuvwx", typo: "typo" },
-		];
+		const quizObj = await getGeneralQuiz();
+		console.log(quizObj);
 		// 整形
 		const result = createAllItems(quizObj);
 		// 格納

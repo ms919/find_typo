@@ -2,7 +2,7 @@ export default Object.freeze({
 	P_CLASS: "quiz-p",
 	TYPO_ID: "typo",
 	NUM_OF_QUESTION: 5,
-	MAX_ROW_NUM: 10,
+	MAX_ROW_NUM: 7,
 	COLORLESS: 0,
 	COLORED: 1,
 	ITEM_CLASS_OBJ: {

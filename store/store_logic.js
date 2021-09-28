@@ -51,7 +51,7 @@ const createAllItems = (quizObj) => {
 
 const decideWordsPerRow = (correctStr) => {
 	const max = fixed.MAX_WORD_NUM[correctStr.length];
-	const min = max - 2;
+	const min = max == 2 ? max - 1 : max - 2;
 	// ランダム関数で文字数決定(行数分ループ)
 	let resArr = [];
 	[...Array(fixed.MAX_ROW_NUM)].map((_, i) =>

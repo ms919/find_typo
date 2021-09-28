@@ -3,13 +3,25 @@ export default {
 	head: {
 		title: "find_typo",
 		htmlAttrs: {
-			lang: "en",
+			lang: "ja",
+			prefix: "og: http://ogp.me/ns#",
 		},
 		meta: [
 			{ charset: "utf-8" },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" },
-			{ hid: "description", name: "description", content: "" },
+			{ hid: "description", name: "description", content: "タイポを探すゲーム" },
 			{ name: "format-detection", content: "telephone=no" },
+			{ hid: "og:site_name", property: "og:site_name", content: "Find Typo" },
+			{ hid: "og:type", property: "og:type", content: "website" },
+			{ hid: "og:url", property: "og:url", content: "サイトのURL" },
+			{ hid: "og:title", property: "og:title", content: "Find Typo" },
+			{
+				hid: "og:description",
+				property: "og:description",
+				content: "タイポを探すゲーム",
+			},
+			{ hid: "og:image", property: "og:image", content: "" },
+			{ name: "twitter:card", content: "summary_large_image" },
 		],
 		link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
 	},

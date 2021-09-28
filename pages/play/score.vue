@@ -9,6 +9,12 @@
 				>Replay</NuxtLink
 			>
 			<NuxtLink type="button" to="/" class="button btn-pink">Home</NuxtLink>
+			<a
+				href="https://twitter.com/intent/tweet?url=https://find-typo.web.app&text=hogehoge&hashtags=find-typo,typo,タイポ,vscode,VSCode"
+				target="_blank"
+			>
+				Tweet
+			</a>
 		</div>
 		<div class="play-component-wrapper">
 			<PlayScore />
@@ -22,9 +28,13 @@ import fixed from "~/const/const.js";
 export default {
 	computed: {
 		timeArr() {
-			return fixed.STANDARD_TIME - this.$store.getters.timeArr.reduce((x, y) => {
-				return x + y;
-			});
+			const arr = this.$store.getters.timeArr;
+			return arr.length > 0 ? (
+				fixed.STANDARD_TIME -
+				arr.reduce((x, y) => {
+					return x + y;
+				})
+			) : null;
 		},
 	},
 };

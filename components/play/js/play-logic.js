@@ -5,6 +5,9 @@ export default {
 	computed: mapGetters(["currentItems", "itemsPointer"]),
 	methods: {
 		gotoNext() {
+			// エンド時間取得
+			this.$store.dispatch("addTimeArr", Date.now());
+			// 遷移処理
 			if (this.itemsPointer + 1 == fixed.NUM_OF_QUESTION) {
 				this.$router.push("/play/score");
 			} else {
@@ -20,5 +23,7 @@ export default {
 		this.$once("hook:beforeDestroy", () => {
 			typo.removeEventListener("click", this.gotoNext);
 		});
+		// スタート時間取得
+		this.$store.dispatch("setStartTime", Date.now());
 	},
 };

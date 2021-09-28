@@ -5,6 +5,7 @@ export default Object.freeze({
 	MAX_ROW_NUM: 7,
 	COLORLESS: 0,
 	COLORED: 1,
+	STANDARD_TIME: 180000,
 	ITEM_CLASS_OBJ: {
 		1: "orange",
 		2: "skyblue",

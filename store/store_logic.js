@@ -1,8 +1,23 @@
 import fixed from "~/const/const.js";
+import { db } from "~/plugins/firebase.js";
+import { collection, getDocs, addDoc, query, where } from "firebase/firestore";
 
 const getRandomInt = (min, max) => {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 };
+
+const getGeneralQuiz = async () => {
+	let obj = {};
+	const querySnapshot = await getDocs(collection(db, "general_quiz"));
+	querySnapshot.forEach((doc) => {
+		obj = doc.data();
+	});
+	return obj;
+}
+
+const addGeneralQuiz = () => {
+
+}
 
 const createAllItems = (quizObj) => {
 	// quizObjを値渡し
@@ -124,4 +139,4 @@ const formatAllItems = (itemsInfoArr) => {
 	return resArr;
 };
 
-export { getRandomInt, createAllItems };
+export { getRandomInt, getGeneralQuiz, createAllItems };

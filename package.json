@@ -1,19 +1,20 @@
 {
-  "name": "find_typo",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
-  },
-  "dependencies": {
-    "bootstrap": "^4.6.0",
-    "bootstrap-vue": "^2.21.2",
-    "core-js": "^3.15.1",
-    "firebase": "^9.1.0",
-    "nuxt": "^2.15.7",
-    "sanitize-html": "^2.5.1"
-  }
+	"name": "find_typo",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "nuxt",
+		"build": "nuxt build",
+		"start": "nuxt start",
+		"export": "nuxt export",
+		"serve": "nuxt serve"
+	},
+	"dependencies": {
+		"bootstrap": "^4.6.0",
+		"bootstrap-vue": "^2.21.2",
+		"core-js": "^3.15.1",
+		"firebase": "^9.1.0",
+		"nuxt": "^2.15.7",
+		"sanitize-html": "^2.5.1"
+	}
 }

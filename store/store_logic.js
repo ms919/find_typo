@@ -41,10 +41,7 @@ const decideTypoPosition = (maxRowNum, wordsPerRow) => {
 	// ランダム関数で行位置を決定
 	const rowNum = getRandomInt(0, maxRowNum - 1);
 	// ランダム関数で何文字目かを決定
-	const wordPosition =
-		rowNum == 0  // wordsPerRowには1行に並べる単語数が入るため、-1する。
-			? getRandomInt(0, wordsPerRow[rowNum] - 1)
-			: getRandomInt(0, wordsPerRow[rowNum - 1] - 1);
+	const wordPosition = getRandomInt(0, wordsPerRow[rowNum] - 1);
 	return { row: rowNum, col: wordPosition };
 };
 

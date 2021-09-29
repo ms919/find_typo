@@ -1,7 +1,9 @@
 export default {
+	mode: "universal",
+	target: "static",
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
-		title: "find_typo",
+		title: "Find Typo",
 		htmlAttrs: {
 			lang: "ja",
 			prefix: "og: http://ogp.me/ns#",
@@ -12,9 +14,9 @@ export default {
 			{
 				hid: "description",
 				name: "description",
-				content: "タイポを探すゲーム",
+				content: "VSCodeユーザー向け、タイポ探しゲーム",
 			},
-			{ name: "format-detection", content: "telephone=no" },
+			{ name: "format-detection", content: "telephone=no,address=no,email=no" },
 			{ hid: "og:site_name", property: "og:site_name", content: "Find Typo" },
 			{ hid: "og:type", property: "og:type", content: "website" },
 			{
@@ -26,12 +28,20 @@ export default {
 			{
 				hid: "og:description",
 				property: "og:description",
-				content: "タイポを探すゲーム",
+				content: "VSCodeユーザー向け、タイポ探しゲーム",
 			},
-			{ hid: "og:image", property: "og:image", content: "/ogp.png" },
+			{
+				hid: "og:image",
+				property: "og:image",
+				content: "https://find-typo.web.app/ogp.png",
+			},
 			{ name: "twitter:card", content: "summary_large_image" },
+			{ name: "twitter:creator", content: "@sakkkkup" },
 		],
-		link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+		link: [
+			{ rel: "icon", type: "image/x-icon", href: "/typo.ico" },
+			{ rel: "canonical", href: "https://find-typo.web.app" },
+		],
 	},
 
 	// Global CSS: https://go.nuxtjs.dev/config-css

@@ -45,7 +45,7 @@ export default {
 	},
 
 	// Global CSS: https://go.nuxtjs.dev/config-css
-	css: ["~/assets/css/main"],
+	css: ["~/assets/css/main", "~/assets/css/play"],
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 	plugins: ["~/plugins/sanitize", "~/plugins/firebase"],
@@ -60,8 +60,11 @@ export default {
 	modules: [
 		// https://go.nuxtjs.dev/bootstrap
 		"bootstrap-vue/nuxt",
+		"nuxt-fontawesome",
 	],
-
+	fontawesome: {
+		component: "fa",
+	},
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: { loadingScreen: false },
 };

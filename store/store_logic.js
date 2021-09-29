@@ -1,7 +1,30 @@
 import fixed from "~/const/const.js";
+import { db } from "~/plugins/firebase.js";
+import { collection, getDocs } from "firebase/firestore";
 
 const getRandomInt = (min, max) => {
 	return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+const getGeneralQuiz = async () => {
+	let dataArr = [];
+	let arr = [];
+	let numArr = [];
+
+	// DBから全データ取得
+	const querySnapshot = await getDocs(collection(db, "general_quiz"));
+	querySnapshot.forEach((doc) => {
+		dataArr.push(doc.data());
+	});
+
+	// 取得データからランダムに5つ抽出
+	while(numArr.length < 5) {
+		arr.push(getRandomInt(0, dataArr.length -1));
+		numArr = [...new Set(arr)];
+	};
+	const result = numArr.map(x => dataArr[x]);
+
+	return result;
 };
 
 const createAllItems = (quizObj) => {
@@ -28,7 +51,7 @@ const createAllItems = (quizObj) => {
 
 const decideWordsPerRow = (correctStr) => {
 	const max = fixed.MAX_WORD_NUM[correctStr.length];
-	const min = max - 2;
+	const min = max == 2 ? max - 1 : max - 2;
 	// ランダム関数で文字数決定(行数分ループ)
 	let resArr = [];
 	[...Array(fixed.MAX_ROW_NUM)].map((_, i) =>
@@ -124,4 +147,4 @@ const formatAllItems = (itemsInfoArr) => {
 	return resArr;
 };
 
-export { getRandomInt, createAllItems };
+export { getGeneralQuiz, createAllItems, getRandomInt };

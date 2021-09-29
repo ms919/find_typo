@@ -11,7 +11,6 @@
 
 <script>
 import { mapGetters } from "vuex";
-import "~/assets/css/play.css";
 
 export default {
 	computed: mapGetters(["currentDesc", "currentComponent"]),

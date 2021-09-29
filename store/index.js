@@ -1,17 +1,26 @@
-import { getRandomInt, createAllItems } from "./store_logic.js";
+import {
+	getGeneralQuiz,
+	createAllItems,
+} from "./store_logic.js";
 
 export const state = () => ({
 	currentComponent: "PlayOdd",
 	itemsPointer: 0,
+	dbData: [],
 	allItems: [],
+	startTime: 0,
+	timeArr: [],
 });
 
 export const getters = {
 	currentComponent: (state) => state.currentComponent,
 	currentDesc: (state) => String(state.itemsPointer + 1) + "/5",
 	itemsPointer: (state) => state.itemsPointer,
+	dbData: (state) => state.dbData,
 	currentItems: (state) => state.allItems[state.itemsPointer],
 	allItems: (state) => state.allItems,
+	startTime: (state) => state.startTime,
+	timeArr: (state) => state.timeArr,
 };
 
 export const mutations = {
@@ -24,31 +33,42 @@ export const mutations = {
 	changeCurrentItems(state, nextIndex) {
 		state.currentItems = state.allItems[nextIndex];
 	},
+	setDbData(state, dbData) {
+		state.dbData = dbData;
+	},
 	setAllItems(state, allItems) {
 		state.allItems = allItems;
 	},
-	clearState(state) {
+	setStartTime(state, time) {
+		state.startTime = time;
+	},
+	addTimeArr(state, time) {
+		state.timeArr.push(time);
+	},
+	clearData(state) {
 		state.currentComponent = "PlayOdd";
 		state.itemsPointer = 0;
 		state.allItems = [];
+		state.dbData = [];
+		state.timeArr = [];
+	},
+	clearTime(state) {
+		state.startTime = 0;
 	},
 };
 
 export const actions = {
-	getAllItems({ commit, getters }) {
-		// allItemsが空なら取得、値が入ってるなら空にするか聞く
+	async getAllItems({ commit, getters, dispatch }) {
+		// データ初期化
+		dispatch("clearState");
 		// DBから5問分ランダムに取得
-		const quizObj = [
-			{ correct: "abc", typo: "typo" },
-			{ correct: "cdefg", typo: "typo" },
-			{ correct: "hijklmn", typo: "typo" },
-			{ correct: "opqr", typo: "typo" },
-			{ correct: "stuvwx", typo: "typo" },
-		];
+		const dataArr = await getGeneralQuiz();
+		console.log(dataArr);
 		// 整形
-		const result = createAllItems(quizObj);
+		const result = createAllItems(dataArr);
 		// 格納
 		commit("setAllItems", result);
+		commit("setDbData", dataArr);
 		console.log(getters.allItems);
 	},
 	gotoNext({ commit, getters }) {
@@ -62,6 +82,13 @@ export const actions = {
 		commit("changeCurrentComponent", nextComponent);
 	},
 	clearState({ commit }) {
-		commit("clearState");
+		commit("clearData");
+		commit("clearTime");
+	},
+	setStartTime({ commit }, time){
+		commit("setStartTime", time);
+	},
+	addTimeArr({ commit, getters }, endTime){
+		commit("addTimeArr", endTime - getters.startTime);
 	},
 };

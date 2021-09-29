@@ -2,9 +2,10 @@ export default Object.freeze({
 	P_CLASS: "quiz-p",
 	TYPO_ID: "typo",
 	NUM_OF_QUESTION: 5,
-	MAX_ROW_NUM: 10,
+	MAX_ROW_NUM: 7,
 	COLORLESS: 0,
 	COLORED: 1,
+	STANDARD_TIME: 180000,
 	ITEM_CLASS_OBJ: {
 		1: "orange",
 		2: "skyblue",
@@ -14,7 +15,7 @@ export default Object.freeze({
 		6: "yellow",
 		7: "cleargreen",
 	},
-	// 横に並べられる限界値 - 1
+	// 横に並べられる限界値-2(横幅に余裕を持つため)
 	MAX_WORD_NUM: {
 		3: 13,
 		4: 10,

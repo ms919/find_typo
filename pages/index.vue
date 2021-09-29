@@ -1,29 +1,33 @@
 <template>
 	<div>
 		<div class="title">
-			<h1>Find <span class="wave">Typo</span></h1>
-			<br>
-			<br>
-			<p class="text-left sm-size">
-				<span class="sm-size">for the&nbsp;</span> VSCoder<br />
-				<span class="sm-size">by&nbsp; the&nbsp;</span> VSCoder<br />
-				<span class="sm-size">of&nbsp; the&nbsp;</span> VSCoder
+			<h1 class="for-inline">Find&nbsp;</h1>
+			<h1 class="for-block">Find</h1>
+			<h1><span class="wave">Typo</span></h1>
+			<p class="sm-size">
+				for the&nbsp; VSCoder<br />
+				by&nbsp; the&nbsp; VSCoder<br />
+				of&nbsp; the&nbsp; VSCoder
 			</p>
 		</div>
 		<div class="buttons">
-			<NuxtLink to="/play/rule" class="button btn-pink"
-				>Play</NuxtLink
-			>
-			<!-- <a href="#">Login with</a> -->
+			<NuxtLink to="/play/rule" class="button btn-pink">Play</NuxtLink>
 		</div>
 	</div>
 </template>
 
 <style scoped>
 .title {
-	position: absolute;
-	left: 15%;
-	top: 28%;
+	width: 50%;
+	height: 50vh;
+	padding: 12rem 0 0 15rem;
+}
+.title h1 {
+	display: inline;
+	margin-bottom: 1rem;
+}
+.for-block {
+	display: none !important;
 }
 .wave {
 	color: #ce9178;
@@ -37,17 +41,37 @@
 }
 .sm-size {
 	font-size: 2rem;
-}
-.hoge {
-	/* background-color: palegreen; */
 	text-align: left;
 }
 .buttons {
-	position: absolute;
-	left: 60%;
-	/* top: 50%; */
-	top: 60%;
-	width: 20%;
-	text-align: center;
+	padding: 6rem 20rem;
+	text-align: right;
+}
+@media screen and (max-width: 425px) {
+	.title {
+		width: 100%;
+		padding: 5rem 0;
+	}
+	.title h1 {
+		font-size: 8rem;
+		display: block;
+		text-align: center;
+	}
+	.for-block {
+		display: block !important;
+	}
+	.for-inline {
+		display: none !important;
+	}
+	.sm-size {
+		font-size: 1.5rem;
+		text-align: center;
+	}
+	.buttons {
+		padding: 0;
+		padding-top: 13rem;
+		text-align: center;
+		height: 100vh;
+	}
 }
 </style>

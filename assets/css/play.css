@@ -1,6 +1,6 @@
 .quiz-p {
-	font-size: 4.3rem;
-	line-height: 4rem;
+	font-size: 3rem;
+	line-height: 3.5rem;
 	cursor: pointer;
 	margin-right: 1rem;
 }
@@ -34,8 +34,8 @@
 .play-component-wrapper {
 	width: 80%;
 	height: 70vh;
-	border: 10px solid #3a3d41;
-	border-radius: 15px;
+	border: 0.5rem solid #3a3d41;
+	border-radius: 0.8rem;
 	text-align: center;
 	display:flex;
 	justify-content: center;
@@ -47,19 +47,25 @@
 }
 @media screen and (max-width: 1366px) {
 	.quiz-p {
-		font-size: 3.5rem;
-		line-height: 2.3rem;
+		font-size: 2.5rem;
+		line-height: 2.8rem;
 	}
 }
 @media screen and (max-width: 1024px) {
 	.quiz-p {
-		font-size: 2.4rem;
-		line-height: 1.4rem;
+		font-size: 1.8rem;
+		line-height: 2.4rem;
+	}
+	.play-component-wrapper {
+		height: 75vh;
 	}
 }
 @media screen and (max-width: 425px) {
 	.quiz-p {
-		font-size: 2rem;
-		line-height: 1.3rem;
+		font-size: 1.3rem;
+		line-height: 2rem;
+	}
+	.play-component-wrapper {
+		height: 80vh;
 	}
 }

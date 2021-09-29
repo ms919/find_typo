@@ -52,6 +52,11 @@ a:hover {
 	background: #3a3d41;
 	border: 5px solid #c586c0;
 }
+@media screen and (max-width: 1366px) {
+	html {
+		font-size: 13px;
+	}
+}
 @media screen and (max-width: 1024px) {
 	.button {
 		padding: 0.375rem 5rem;
@@ -59,12 +64,17 @@ a:hover {
 }
 @media screen and (max-width: 425px) {
 	html {
-		font-size: 10px;
+		font-size: 12px;
 	}
 	p {
 		font-size: 1.6rem;
 	}
-	.button {
+	/* .button {
 		padding: 0.375rem 5rem;
+	} */
+}
+@media screen and (max-width: 320px) {
+	html {
+		font-size: 10px;
 	}
 }

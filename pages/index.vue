@@ -44,12 +44,20 @@
 	text-align: left;
 }
 .buttons {
-	padding: 6rem 20rem;
+	padding: 6rem 15rem;
 	text-align: right;
+}
+@media screen and (max-width: 1024px) {
+	.title {
+		width: 100%;
+		padding: 10rem 0 0 10rem;
+	}
+	.buttons {
+		padding: 6rem 10rem;
+	}
 }
 @media screen and (max-width: 425px) {
 	.title {
-		width: 100%;
 		padding: 5rem 0;
 	}
 	.title h1 {

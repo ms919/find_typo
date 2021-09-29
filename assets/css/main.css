@@ -59,4 +59,7 @@ a:hover {
 	p {
 		font-size: 1.6rem;
 	}
+	.button {
+		padding: 0.375rem 5rem;
+	}
 }

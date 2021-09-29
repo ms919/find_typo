@@ -11,7 +11,7 @@
 				2. 各問題1つだけタイポが紛れています。<br />
 				3. なるべく早くタイポを探そう!!
 			</p>
-			<NuxtLink type="button" to="/play/play" class="button btn-pink"
+			<NuxtLink to="/play/play" class="button btn-pink"
 				>Start</NuxtLink
 			>
 		</div>

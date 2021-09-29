@@ -2,6 +2,7 @@ header,
 footer {
 	background-color: #3a3d41;
 	height: 30px;
+	width: 100%;
 }
 body {
 	font-family: Menlo, Monaco, "Courier New", monospace;
@@ -20,8 +21,13 @@ a {
 }
 a:hover {
 	color: #d4d4d4;
-	text-decoration: underline wavy 0.33rem #007acc;
+	text-decoration: underline wavy #007acc;
 	text-decoration-skip-ink: none;
+	-webkit-text-decoration-line: underline;
+	-webkit-text-decoration-style: wavy;
+	-webkit-text-decoration-color: #007acc;
+	text-decoration-thickness: 0.33rem;
+	-webkit-text-decoration-skip-ink: none;
 }
 .button {
 	display: inline-block;

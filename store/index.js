@@ -1,7 +1,5 @@
-import {
-	getGeneralQuiz,
-	createAllItems,
-} from "./store_logic.js";
+import { getGeneralQuiz, createAllItems } from "./store_logic.js";
+import fixed from "~/const/const.js";
 
 export const state = () => ({
 	currentComponent: "PlayOdd",
@@ -85,10 +83,13 @@ export const actions = {
 		commit("clearData");
 		commit("clearTime");
 	},
-	setStartTime({ commit }, time){
+	setStartTime({ commit }, time) {
 		commit("setStartTime", time);
 	},
-	addTimeArr({ commit, getters }, endTime){
-		commit("addTimeArr", endTime - getters.startTime);
+	addTimeArr({ commit, getters }, endTime) {
+		const timeArr = getters.timeArr;
+		if (timeArr.length < fixed.NUM_OF_QUESTION) {
+			commit("addTimeArr", endTime - getters.startTime);
+		}
 	},
 };

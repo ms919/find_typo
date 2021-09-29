@@ -44,7 +44,7 @@ const createAllItems = (quizObj) => {
 			itemsInfoArr[i].words_per_row
 		);
 	});
-	console.log(itemsInfoArr);
+	// console.log(itemsInfoArr);
 	// 出来上がった情報オブジェクトを元に結果オブジェクトを生成
 	return formatAllItems(itemsInfoArr);
 };
@@ -115,8 +115,6 @@ const formatAllItems = (itemsInfoArr) => {
 			});
 		});
 	});
-	console.log(baseAttrArr);
-	console.log(baseStrArr);
 
 	// タイポを反映させる
 	let x = 0;
@@ -128,8 +126,6 @@ const formatAllItems = (itemsInfoArr) => {
 		baseStrArr[i][x][y] = arr.typo;
 		baseAttrArr[i][x][y] = `${baseAttrArr[i][x][y]} id='${fixed.TYPO_ID}'`;
 	});
-	console.log(baseAttrArr);
-	console.log(baseStrArr);
 
 	// pタグの文字列を作る
 	[...Array(fixed.NUM_OF_QUESTION)].map((_, i) => {

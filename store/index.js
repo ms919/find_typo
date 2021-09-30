@@ -62,18 +62,17 @@ export const mutations = {
 };
 
 export const actions = {
-	async getAllItems({ commit, getters, dispatch }) {
+	async getAllItems({ commit, dispatch }) {
 		// データ初期化
 		dispatch("clearState");
 		// DBから5問分ランダムに取得
 		const dataArr = await getGeneralQuiz();
-		console.log(dataArr);
 		// 整形
 		const result = createAllItems(dataArr);
 		// 格納
 		commit("setAllItems", result);
 		commit("setDbData", dataArr);
-		console.log(getters.allItems);
+		// console.log(getters.allItems);
 	},
 	gotoNext({ commit, getters }) {
 		// 最初にポインタをインクリメント

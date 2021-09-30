@@ -3,21 +3,22 @@
 		class="play-wrapper d-flex flex-column justify-content-center align-items-center"
 	>
 		<div class="d-flex top-wrapper">
-			<div class="d-flex mr-auto pl-4">
-				<p>Score&nbsp;</p>
-				<p>{{ timeArr }}</p>
+			<div class="d-flex mr-auto ml-2 pt-4">
+				<p class="p-score">Score&nbsp;</p>
+				<p class="p-score">{{ score }}</p>
 			</div>
-			<NuxtLink to="/play/rule" class="p-2"
-				><fa-layers full-width
-					><fa :icon="faRedoAlt" class="fa-lg pink" /><fa
+			<NuxtLink to="/play/rule" class="mr-2"
+				><fa-layers full-width class="icon-size"
+					><fa :icon="faRedoAlt" class="icon-size pink" /><fa
 						:icon="faPlay"
-						transform="shrink-8 right-4" class="pink" /></fa-layers
+						transform="shrink-8.7 right-1.2 down-0.5"
+						class="pink" /></fa-layers
 			></NuxtLink>
-			<NuxtLink to="/" class="p-2"
-				><fa :icon="faHome" class="fa-lg yellow"
+			<NuxtLink to="/" class="mr-2"
+				><fa :icon="faHome" class="icon-size yellow"
 			/></NuxtLink>
-			<a :href="tweetContent" target="_blank" class="pt-2 pr-2">
-				<fa :icon="faTwitter" class="fa-lg lightblue" />
+			<a :href="tweetContent" target="_blank" class="mr-2">
+				<fa :icon="faTwitter" class="icon-size lightblue" />
 			</a>
 		</div>
 		<div class="play-component-wrapper">
@@ -33,39 +34,59 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 export default {
 	computed: {
-		timeArr() {
+		score() {
 			const arr = this.$store.getters.timeArr;
-			return arr.length > 0
-				? fixed.STANDARD_TIME -
-						arr.reduce((x, y) => {
-							return x + y;
-						})
-				: null;
+			if (arr.length == 0) {
+				return null;
+			}
+			const minusPoint = fixed.STANDARD_TIME / fixed.NUM_OF_QUESTION / 10;
+			const count = this.$store.getters.hintCount.length;
+			// 基準時間 - 合計時間 - (マイナスP * ヒント数)
+			return (
+				fixed.STANDARD_TIME -
+				arr.reduce((x, y) => {
+					return x + y;
+				}) -
+				minusPoint * count
+			);
 		},
 		tweetContent() {
 			const url =
 				"https://twitter.com/intent/tweet?url=https://find-typo.web.app";
-			const text = this.timeArr != null ? `&text=SCORE:${this.timeArr}` : "";
-			const hashtags = "&hashtags=findtypo,typo,タイポ,vscode,VSCode";
+			const text =
+				this.score != null ? `%0a&text=SCORE:${this.score}%0a%0a` : "&text=";
+			const hashtags =
+				"&hashtags=FindTypo,エンジニア,engineer,間違い探し,typo,タイポ,vscode,VSCode";
 			return `${url}${text}${hashtags}`;
 		},
-		faHome() {
-			return faHome;
-		},
-		faTwitter() {
-			return faTwitter;
-		},
-		faRedoAlt() {
-			return faRedoAlt;
-		},
-		faPlay() {
-			return faPlay;
-		},
+		faHome: () => faHome,
+		faTwitter: () => faTwitter,
+		faRedoAlt: () => faRedoAlt,
+		faPlay: () => faPlay,
 	},
 };
 </script>
 <style scoped>
-.top-wrapper{
+.top-wrapper {
 	width: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.icon-size {
+	font-size: 3rem;
+}
+@media screen and (max-width: 800px) {
+	.play-component-wrapper {
+		height: 65vh;
+	}
+}
+@media screen and (max-width: 425px) {
+	.p-score {
+		font-size: 2rem;
+	}
+	.icon-size {
+		font-size: 2rem;
+	}
 }
 </style>

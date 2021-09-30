@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<header class="header mb-auto"></header>
+		<header class="sticky-top"></header>
 		<nuxt />
-		<footer class="footer fixed-bottom"></footer>
+		<footer class="fixed-bottom"></footer>
 	</div>
 </template>

@@ -3,7 +3,7 @@
 		<div class="title">
 			<h1 class="for-inline">Find&nbsp;</h1>
 			<h1 class="for-block">Find</h1>
-			<h1><span class="wave">Typo</span></h1>
+			<h1><span class="typo">Typo</span></h1>
 			<p class="sm-size">
 				for the&nbsp; VSCoder<br />
 				by&nbsp; the&nbsp; VSCoder<br />
@@ -28,16 +28,6 @@
 }
 .for-block {
 	display: none !important;
-}
-.wave {
-	color: #ce9178;
-	text-decoration: underline wavy #007acc;
-	text-decoration-skip-ink: none;
-	-webkit-text-decoration-line: underline;
-	-webkit-text-decoration-style: wavy;
-	-webkit-text-decoration-color: #007acc;
-	-webkit-text-decoration-skip-ink: none;
-	text-decoration-thickness: 0.33rem;
 }
 .sm-size {
 	font-size: 2rem;

@@ -4,6 +4,7 @@ import fixed from "~/const/const.js";
 export const state = () => ({
 	currentComponent: "PlayOdd",
 	itemsPointer: 0,
+	hintCount: [],
 	dbData: [],
 	allItems: [],
 	startTime: 0,
@@ -14,6 +15,7 @@ export const getters = {
 	currentComponent: (state) => state.currentComponent,
 	currentDesc: (state) => String(state.itemsPointer + 1) + "/5",
 	itemsPointer: (state) => state.itemsPointer,
+	hintCount: (state) => state.hintCount,
 	dbData: (state) => state.dbData,
 	currentItems: (state) => state.allItems[state.itemsPointer],
 	allItems: (state) => state.allItems,
@@ -31,6 +33,9 @@ export const mutations = {
 	changeCurrentItems(state, nextIndex) {
 		state.currentItems = state.allItems[nextIndex];
 	},
+	addHintCount(state, pointer) {
+		state.hintCount.push(pointer);
+	},
 	setDbData(state, dbData) {
 		state.dbData = dbData;
 	},
@@ -47,6 +52,7 @@ export const mutations = {
 		state.currentComponent = "PlayOdd";
 		state.itemsPointer = 0;
 		state.allItems = [];
+		state.hintCount = [];
 		state.dbData = [];
 		state.timeArr = [];
 	},
@@ -90,6 +96,11 @@ export const actions = {
 		const timeArr = getters.timeArr;
 		if (timeArr.length < fixed.NUM_OF_QUESTION) {
 			commit("addTimeArr", endTime - getters.startTime);
+		}
+	},
+	addHintCount({ commit, getters }, pointer) {
+		if (getters.hintCount.length < fixed.NUM_OF_QUESTION) {
+			commit("addHintCount", pointer);
 		}
 	},
 };

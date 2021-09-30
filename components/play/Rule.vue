@@ -3,7 +3,8 @@
 		<p>
 			1. 全5問出題です。<br />
 			2. 各問題1つだけタイポが紛れています。<br />
-			3. なるべく早くタイポを探そう!!
+			3. <fa :icon="faExclamationCircle" class="cleargreen" />を押すとヒントが出ます。<br/>
+			4. なるべく早くタイポを探そう!!
 		</p>
 		<div class="buttons">
 			<NuxtLink to="/play/play" class="button btn-pink">Start</NuxtLink>
@@ -11,10 +12,15 @@
 	</div>
 </template>
 <script>
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+
 export default {
 	created() {
 		this.$store.dispatch("getAllItems");
 	},
+	computed: {
+		faExclamationCircle: () => faExclamationCircle,
+	}
 };
 </script>
 <style scoped>

@@ -29,7 +29,7 @@ export default {
 			num_of_q: fixed.NUM_OF_QUESTION,
 		};
 	},
-	computed: mapGetters(["dbData", "timeArr"]),
+	computed: {...mapGetters(["dbData", "timeArr"])},
 };
 </script>
 

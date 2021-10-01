@@ -42,13 +42,13 @@ export default {
 			const minusPoint = fixed.STANDARD_TIME / fixed.NUM_OF_QUESTION / 10;
 			const count = this.$store.getters.hintCount.length;
 			// 基準時間 - 合計時間 - (マイナスP * ヒント数)
-			return (
+			const num =
 				fixed.STANDARD_TIME -
 				arr.reduce((x, y) => {
 					return x + y;
 				}) -
-				minusPoint * count
-			);
+				minusPoint * count;
+			return num.toLocaleString();
 		},
 		tweetContent() {
 			const url =
@@ -56,7 +56,7 @@ export default {
 			const text =
 				this.score != null ? `%0a&text=SCORE:${this.score}%0a%0a` : "&text=";
 			const hashtags =
-				"&hashtags=FindTypo,エンジニア,engineer,間違い探し,typo,タイポ,vscode,VSCode";
+				"&hashtags=FindTypo,エンジニア,間違い探し,typo,タイポ,vscode,VSCode";
 			return `${url}${text}${hashtags}`;
 		},
 		faHome: () => faHome,

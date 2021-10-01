@@ -14,7 +14,7 @@ export default {
 			{
 				hid: "description",
 				name: "description",
-				content: "VSCodeユーザー向け、タイポ探しゲーム",
+				content: "ひたすらタイポを探すゲーム",
 			},
 			{ name: "format-detection", content: "telephone=no,address=no,email=no" },
 			{ hid: "og:site_name", property: "og:site_name", content: "Find Typo" },
@@ -28,7 +28,7 @@ export default {
 			{
 				hid: "og:description",
 				property: "og:description",
-				content: "VSCodeユーザー向け、タイポ探しゲーム",
+				content: "ひたすらタイポを探すゲーム",
 			},
 			{
 				hid: "og:image",

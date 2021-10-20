@@ -5,7 +5,8 @@
 		<div class="d-flex top-wrapper">
 			<div class="d-flex mr-auto ml-2 pt-4">
 				<p class="p-score">Score&nbsp;</p>
-				<p class="p-score">{{ commaScore }}&nbsp;{{ level }}</p>
+				<p class="p-score">{{ commaScore }}</p>
+				<p class="p-level">&nbsp;{{ level }}</p>
 			</div>
 			<NuxtLink to="/play/rule" class="mr-2"
 				><fa-layers full-width class="icon-size"
@@ -120,6 +121,9 @@ export default {
 @media screen and (max-width: 800px) {
 	.play-component-wrapper {
 		height: 65vh;
+	}
+	.p-level {
+		display: none;
 	}
 }
 @media screen and (max-width: 425px) {

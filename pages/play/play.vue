@@ -4,7 +4,23 @@
 	>
 		<div class="d-flex align-items-center">
 			<p class="desc mr-auto ml-2 pt-3">{{ currentDesc }}</p>
-			<fa :icon="faExclamationCircle" @click="giveHint" class="icon-settings cleargreen ml-3" />
+			<fa
+				:icon="faExclamationCircle"
+				@click="giveHint"
+				class="icon-settings cleargreen ml-3"
+			/>
+			<fa
+				v-if="muteFlg"
+				:icon="faVolumeMute"
+				@click="changeSoundSetting"
+				class="icon-settings ml-3"
+			/>
+			<fa
+				v-else
+				:icon="faVolumeUp"
+				@click="changeSoundSetting"
+				class="icon-settings ml-3"
+			/>
 		</div>
 		<div class="play-component-wrapper">
 			<component :is="currentComponent"></component>
@@ -14,19 +30,28 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+	faExclamationCircle,
+	faVolumeUp,
+	faVolumeMute,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default {
 	computed: {
-		...mapGetters(["currentDesc", "currentComponent"]),
+		...mapGetters(["currentDesc", "currentComponent", "muteFlg"]),
 		faExclamationCircle: () => faExclamationCircle,
+		faVolumeUp: () => faVolumeUp,
+		faVolumeMute: () => faVolumeMute,
 	},
 	methods: {
-		giveHint(){
+		giveHint() {
 			document.getElementById("typo").classList.add("typo");
 			this.$store.dispatch("addHintCount", this.$store.getters.itemsPointer);
-		}
-	}
+		},
+		changeSoundSetting() {
+			this.$store.dispatch("changeMuteFlg");
+		},
+	},
 };
 </script>
 

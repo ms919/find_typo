@@ -10,6 +10,7 @@ export const state = () => ({
 	startTime: 0,
 	timeArr: [],
 	correctSound: null,
+	muteFlg: false,
 });
 
 export const getters = {
@@ -23,6 +24,7 @@ export const getters = {
 	startTime: (state) => state.startTime,
 	timeArr: (state) => state.timeArr,
 	correctSound: (state) => state.correctSound,
+	muteFlg: (state) => state.muteFlg,
 };
 
 export const mutations = {
@@ -61,6 +63,9 @@ export const mutations = {
 	},
 	clearTime(state) {
 		state.startTime = 0;
+	},
+	changeMuteFlg(state) {
+		state.muteFlg = !state.muteFlg;
 	},
 };
 
@@ -104,5 +109,8 @@ export const actions = {
 		if (getters.hintCount.length < fixed.NUM_OF_QUESTION) {
 			commit("addHintCount", pointer);
 		}
+	},
+	changeMuteFlg({ commit }) {
+		commit("changeMuteFlg");
 	},
 };

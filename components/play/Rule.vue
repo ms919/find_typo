@@ -4,7 +4,7 @@
 			1. 全5問出題です。<br />
 			2. 各問題1つだけタイポが紛れています。<br />
 			3. <fa :icon="faExclamationCircle" class="cleargreen" />を押すとヒントが出ます。<br/>
-			4. なるべく早くタイポを探そう!!
+			4. なるべく速くタイポを探して、高スコアを狙おう！！
 		</p>
 		<div class="buttons">
 			<NuxtLink to="/play/play" class="button btn-pink">Start</NuxtLink>

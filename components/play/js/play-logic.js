@@ -2,9 +2,11 @@ import { mapGetters } from "vuex";
 import fixed from "~/const/const.js";
 
 export default {
-	computed: mapGetters(["currentItems", "itemsPointer"]),
+	computed: mapGetters(["currentItems", "itemsPointer", "correctSound"]),
 	methods: {
 		gotoNext() {
+			// 効果音を鳴らす
+			this.correctSound.play();
 			// エンド時間取得
 			this.$store.dispatch("addTimeArr", Date.now());
 			// 遷移処理

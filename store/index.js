@@ -9,6 +9,7 @@ export const state = () => ({
 	allItems: [],
 	startTime: 0,
 	timeArr: [],
+	correctSound: null,
 });
 
 export const getters = {
@@ -21,6 +22,7 @@ export const getters = {
 	allItems: (state) => state.allItems,
 	startTime: (state) => state.startTime,
 	timeArr: (state) => state.timeArr,
+	correctSound: (state) => state.correctSound,
 };
 
 export const mutations = {
@@ -55,6 +57,7 @@ export const mutations = {
 		state.hintCount = [];
 		state.dbData = [];
 		state.timeArr = [];
+		state.correctSound = new Audio("/correct.mp3");
 	},
 	clearTime(state) {
 		state.startTime = 0;

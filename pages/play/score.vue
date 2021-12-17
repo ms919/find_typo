@@ -46,7 +46,7 @@ export default {
 			if (arr.length == 0) {
 				return null;
 			}
-			const minusPoint = fixed.STANDARD_TIME / fixed.NUM_OF_QUESTION / 10;
+			const minusPoint = fixed.STANDARD_TIME / fixed.NUM_OF_QUESTION;
 			const count = this.$store.getters.hintCount.length;
 			// 基準時間 - 合計時間 - (マイナスP * ヒント数)
 			return (
@@ -54,7 +54,7 @@ export default {
 				arr.reduce((x, y) => {
 					return x + y;
 				}) -
-				minusPoint * count
+				minusPoint * (count * count)
 			);
 		},
 		commaScore() {
